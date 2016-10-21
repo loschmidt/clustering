@@ -28,11 +28,11 @@ public class ClusteringExample {
         EuclideanSpace matrix = new EuclideanSpace(elements, dimensions);        
         MurtaghParams params = new MurtaghParams().setDistanceMatrixThreshold(murtaghMatrixSize);
         if (complete) {
-            params.setLinkage(new WeightedAverageLinkage());
+            params.setLinkage(new WeightedAverageLinkage<>());
         } else {
-            params.setLinkage(new CompleteLinkage());
+            params.setLinkage(new CompleteLinkage<>());
         }                
-        ClusterFactory<VectorInstance> cf = new ClusterFactory(matrix, params);
+        ClusterFactory<VectorInstance> cf = new ClusterFactory<>(matrix, params);
         Clusters<VectorInstance> cs = cf.cluster(clusteringThreshold);
         cs.print();
     }
